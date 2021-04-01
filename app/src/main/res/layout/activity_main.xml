@@ -5,33 +5,35 @@
     android:id="@+id/OuterConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wallpaper6"
     tools:context=".MainActivity">
+
     <FrameLayout
-    android:id="@+id/photoContainer"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="10dp"
-    android:fadingEdge="horizontal|vertical"
-    app:layout_constraintBottom_toTopOf="@+id/controlsContainer"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.157"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.133">
+        android:id="@+id/photoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fadingEdge="horizontal|vertical"
+        app:layout_constraintBottom_toTopOf="@+id/controlsContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133">
 
-</FrameLayout>
+    </FrameLayout>
 
-<FrameLayout
-android:id="@+id/controlsContainer"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:layout_marginStart="10dp"
-android:layout_marginEnd="10dp"
-android:layout_marginBottom="10dp"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"></FrameLayout>
+    <FrameLayout
+        android:id="@+id/controlsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

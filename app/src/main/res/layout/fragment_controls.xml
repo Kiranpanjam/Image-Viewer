@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#D4D8D8"
-    app:layout_insetEdge="top"
+    android:background="@android:color/transparent"
+
     tools:context=".ControlsFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -18,8 +18,10 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="35dp"
         android:layout_marginBottom="10dp"
+        android:buttonTint="#E3E9ED"
         android:fontFamily="casual"
         android:text="Gallery View"
+        android:textColor="#E3E9ED"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,8 +37,10 @@
         android:layout_marginTop="35dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="10dp"
+        android:buttonTint="#E3E9ED"
         android:fontFamily="casual"
         android:text="Slide Show"
+        android:textColor="#E3E9ED"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,6 +54,8 @@
         android:layout_marginTop="45dp"
         android:layout_marginEnd="50dp"
         android:contentDescription="TODO"
+        android:elevation="5dp"
+        android:focusable="auto"
         android:src="@drawable/fwd6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,6 +66,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="45dp"
+        android:elevation="5dp"
+        android:focusable="auto"
         android:src="@drawable/back6"
         app:layout_constraintEnd_toStartOf="@+id/btnFwd"
         app:layout_constraintHorizontal_bias="0.025"

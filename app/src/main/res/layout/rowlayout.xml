@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#B87373"
+    android:fadingEdge="horizontal|vertical"
+    android:orientation="horizontal"
+    android:padding="5dp">
+    <!--
+    items for a single row of RecyclerView
+    -->
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="156dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="cursive"
+        android:text="ABCD"
+        android:textColor="#000000"
+        android:textSize="30sp" />
+
+</LinearLayout>

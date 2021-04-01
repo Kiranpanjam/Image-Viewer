@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDDC39"
     tools:context=".PhotoFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,8 +11,7 @@
         android:id="@+id/ImgVPhoto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000"
 
-         />
+        android:background="@android:color/transparent" />
 
 </LinearLayout>

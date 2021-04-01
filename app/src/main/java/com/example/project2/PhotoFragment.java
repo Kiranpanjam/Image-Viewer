@@ -1,15 +1,15 @@
 package com.example.project2;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 
 
 public class PhotoFragment extends Fragment {
@@ -17,28 +17,21 @@ public class PhotoFragment extends Fragment {
 
     public static int currentIndex;
     public static int photolist[]={R.drawable.animal13,R.drawable.animal14,R.drawable.animal15,R.drawable.animal16,R.drawable.animal17,R.drawable.animal18};
-    public ImageView imageView[]=new ImageView[photolist.length];
+    ImageDetails SendImageDetails;
+    //Interface to send data from this fragment to control_fragment
+    public interface ImageDetails
+    {
+         void currentIndexNCount(int currentIndex,int PhotosCount);
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-         //   CurrentPhotoIndex = getArguments().getInt(ARG_PARAM1);
-
-
         }
 
-
-       /* getParentFragmentManager().setFragmentResultListener("key", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String key, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                String result = bundle.getString("bundleKey");
-                // Do something with the result...*/
-
-
-        //currentIndex=0;
     }
 
     @Override
@@ -48,28 +41,31 @@ public class PhotoFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup PhotoView= (ViewGroup)inflater.inflate(R.layout.fragment_photo, container, false);
       image=PhotoView.findViewById(R.id.ImgVPhoto);
+
+      //get bundle arguments
        Bundle bundle=getArguments();
 
 
     if(bundle==null)
     {
-    currentIndex=0;
+        currentIndex=0;
         image.setImageResource(photolist[currentIndex]);
         image.setTag(photolist[currentIndex]);
+        SendImageDetails.currentIndexNCount(currentIndex,photolist.length);
+
     }
     else
     {
         currentIndex=bundle.getInt("index");
-        if(bundle.getBoolean("GoToNextImage")==true && bundle.getBoolean("GoToPreviousImage")==false )
+        //To display next image
+        if(bundle.getBoolean("GoToNextImage")&& !bundle.getBoolean("GoToPreviousImage") )
         {
-
-
             currentIndex=currentIndex+1;
             image.setImageResource(photolist[currentIndex]);
             image.setTag(photolist[currentIndex]);
         }
-
-        else if(bundle.getBoolean("GoToNextImage")==false && bundle.getBoolean("GoToPreviousImage")==true )
+        //To display previous image
+        else if(!bundle.getBoolean("GoToNextImage") && bundle.getBoolean("GoToPreviousImage") )
         {
             currentIndex=currentIndex-1;
             image.setImageResource(photolist[currentIndex]);
@@ -80,6 +76,7 @@ public class PhotoFragment extends Fragment {
             image.setImageResource(photolist[currentIndex]);
             image.setTag(photolist[currentIndex]);
         }
+        SendImageDetails.currentIndexNCount(currentIndex,photolist.length);
 
     }
 
@@ -87,15 +84,28 @@ public class PhotoFragment extends Fragment {
         return PhotoView ;
     }
 
-    public void setCurrentIndex()
-    {
 
-    }
-    public int getCurrentIndex()
-    {
-        return currentIndex;
+
+//Attaching 'ImageDetails' interface to photo fragment by overriding 'onAttach' lifecycle method
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Activity activity=(Activity) context;
+        try{
+            SendImageDetails=(PhotoFragment.ImageDetails) activity;
+        }
+        catch (ClassCastException e)
+        {
+            throw new ClassCastException(activity.toString()+" must implement currentIndexNCount ");
+        }
     }
 
+    // This is called when user exits side show to set image index after slide show is closed
+    public void setImage(int index){
+        currentIndex = index;
+        image.setImageResource(photolist[index]);
+        image.setTag(photolist[index]);
+    }
 
 
 }
